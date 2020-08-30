@@ -11,15 +11,31 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      # Authorize SFDX
-      - name: Authorize SFDX
-        uses: sfdx-actions/setup-sfdx@v1
-        with:
-          sfdx-auth-url: ${{ secrets.VMP_PROD }}
+      # Install Salesforce CLI
+      - name: Install Salesforce CLI
+        run: |
+          wget https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
+          mkdir sfdx-cli
+          tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
+          ./sfdx-cli/install
 
       # Checkout the code in the pull request
       - name: "Checkout source code"
         uses: actions/checkout@v2
+
+      # Store secret for dev hub
+      - name: "Populate auth file with PROD secret"
+        shell: bash
+        run: "echo ${{ secrets.VMP_PROD}} > ./VMP_PROD.txt"
+
+      # Authenticate dev hub
+      - name: "Authenticate Dev Hub"
+        run: "sfdx force:auth:sfdxurl:store -f ./VMP_PROD.txt -a devhub -d"
+
+      # Remove auth files
+      - name: "Remove auth files"
+        if: always()
+        run: "rm -f ./VMP_PROD.txt"
 
       # Create scratch org
       - name: "Create scratch org"
