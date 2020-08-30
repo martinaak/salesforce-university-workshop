@@ -1,13 +1,6 @@
 name: "Deploy to production"
 on:
   workflow_dispatch:
-    inputs:
-      packageId:
-        description: "Package ID"
-        required: true
-      org:
-        description: "Org (prod, preprod, dev)"
-        required: true
 jobs:
   deploy-package:
     runs-on: ubuntu-latest
