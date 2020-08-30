@@ -35,5 +35,4 @@ jobs:
 
       # Delete scratch orgs
       - name: "Delete scratch org"
-        if: failure() || !contains( github.event.pull_request.labels.*.name, 'saveScratchOrg')
         run: "sfdx force:org:delete -p -u scratch-org"
