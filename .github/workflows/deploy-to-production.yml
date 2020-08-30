@@ -2,7 +2,7 @@ name: "Deploy to production"
 on:
   workflow_dispatch:
 jobs:
-  deploy-package:
+  deploy-to-prod:
     runs-on: ubuntu-latest
     steps:
       # Authorize SFDX
@@ -11,6 +11,10 @@ jobs:
         with:
           sfdx-auth-url: ${{ secrets.DEVORG }}
 
-      # Install package in target org
-      - name: "Install package in target org"
+      # Checkout the code in the pull request
+      - name: "Checkout source code"
+        uses: actions/checkout@v2
+
+      # Push metadata to prod
+      - name: "Push metadata to prod"
         run: "sfdx force:source:deploy -p force-app"
