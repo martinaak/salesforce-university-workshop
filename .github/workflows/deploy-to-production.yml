@@ -1,0 +1,23 @@
+name: "Deploy to production"
+on:
+  workflow_dispatch:
+    inputs:
+      packageId:
+        description: "Package ID"
+        required: true
+      org:
+        description: "Org (prod, preprod, dev)"
+        required: true
+jobs:
+  deploy-package:
+    runs-on: ubuntu-latest
+    steps:
+      # Authorize SFDX
+      - name: Authorize SFDX
+        uses: sfdx-actions/setup-sfdx@v1
+        with:
+          sfdx-auth-url: ${{ secrets.DEVORG }}
+
+      # Install package in target org
+      - name: "Install package in target org"
+        run: "sfdx force:package:install --package ${{ github.event.inputs.packageId }} -k ${{ secrets.PACKAGE_KEY }} -w 10 -b 10 -r"
