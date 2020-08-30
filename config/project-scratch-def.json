@@ -1,13 +1,12 @@
 {
-    "orgName": "NAV VIRKSOMHETSLØSNINGER",
+    "orgName": "Salesforce University Workshop",
     "edition": "Enterprise",
     "release": "Current",
-    "adminEmail": "fakeemail@nav.no.scratchorg",
+    "adminEmail": "fakeemail@test.no.scratchorg",
     "features": [
         "ProcessBuilder",
         "API",
-        "PersonAccounts",
-        "ContactsToMultipleAccounts"
+        "LiveAgent"
     ],
     "country": "NO",
     "language": "en_US",
@@ -17,12 +16,6 @@
         },
         "languageSettings": {
             "enableTranslationWorkbench": true
-        },
-        "accountSettings": {
-            "enableAccountTeams": true
-        },
-        "emailAdministrationSettings": {
-            "enableEnhancedEmailEnabled": true
         }
     }
 }
