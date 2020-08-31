@@ -143,6 +143,7 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
+    <description>Fruit</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
@@ -153,13 +154,13 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>Appelsin</label>
+    <label>Kiwi</label>
     <nameField>
-        <label>Appelsin Name</label>
+        <label>Kiwi Name</label>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Appelsiner</pluralLabel>
-    <searchLayouts />
+    <pluralLabel>Kiwis</pluralLabel>
+    <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
